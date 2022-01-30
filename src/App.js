@@ -5,11 +5,11 @@ import StartBtns, { StartBtnPersonal, StartBtnCharacters, StartBtnItems, StartBt
 
 function App() {
   return (
-    <div className="App">
-      <button className="box personal" />
-      <button className="box characters" />
-      <button className="box items" />
-      <button className="box esport" />
+    <div className='App'>
+      <StartBtnPersonal/>
+      <StartBtnCharacters/>
+      <StartBtnItems/>
+      <StartBtnEsport/>
     </div>
   );
 }
