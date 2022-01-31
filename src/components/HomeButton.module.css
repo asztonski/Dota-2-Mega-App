@@ -1,0 +1,25 @@
+.HomeButton {
+  width: 45vw;
+  height: 45vh;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: white;
+  background-color: #1c2541;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  text-decoration: none;
+  transition: 0.2s ease-in;
+}
+
+.HomeButton:hover {
+  transform: scale(1.02);
+}
+
+.HomeButton:active {
+  transform: scale(0.95);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+}
