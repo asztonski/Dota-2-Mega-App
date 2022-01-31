@@ -1,0 +1,29 @@
+/* TODO: Use Sass instead */
+/* Class given to the outer-most element of the entire screen */
+.HeroesScreen {
+  margin: 2rem;
+  color: white;
+}
+
+.Title {
+  color: black;
+  font-size: 3rem;
+  text-align: center;
+}
+
+/* Class given to the element that wraps all Hero items */
+.HeroesList {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+/* Class given to a single Hero item */
+.HeroItem {
+  width: 20vw;
+  padding: 1rem;
+  background-color: #1c2541;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
