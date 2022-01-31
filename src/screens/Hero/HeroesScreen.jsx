@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getHeroes } from '../apis/dota';
+import * as heroAPI from '../../apis/heroAPI';
 import styles from './HeroesScreen.module.css';
 
 function HeroesScreen() {
@@ -7,7 +7,7 @@ function HeroesScreen() {
 
   useEffect(() => {
     const fetchHeroes = async (playerName) => {
-      const fetchedHeroes = await getHeroes();
+      const fetchedHeroes = await heroAPI.getHeroes();
       setHeroes(fetchedHeroes);
 
       console.log(fetchedHeroes);

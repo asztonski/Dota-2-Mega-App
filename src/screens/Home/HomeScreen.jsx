@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeButton from '../components/HomeButton';
+import HomeButton from '../../components/HomeButton';
 import styles from './HomeScreen.module.css';
 
 // Ok So basically its a start view that has 4 buttons every button have 25% of window width and 25% of window height
