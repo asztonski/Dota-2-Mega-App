@@ -1,14 +1,21 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { HomeScreen, StatScreen, HeroesScreen, ItemsScreen } from './screens';
+import {
+  HomeScreen,
+  PlayersScreen,
+  HeroesScreen,
+  ItemsScreen,
+} from './screens';
 import './App.css';
+import PlayerDetailsScreen from './screens/Player/PlayerDetailsScreen';
 
 function App() {
   return (
     <Router>
       {/* TODO: Navbar here? */}
       <Routes>
-        <Route path='/players' element={<StatScreen />} />
+        <Route path='/players' element={<PlayersScreen />} />
+        <Route path='/players/:playerId' element={<PlayerDetailsScreen />} />
         <Route path='/heroes' element={<HeroesScreen />} />
         <Route path='/items' element={<ItemsScreen />} />
         <Route path='/' element={<HomeScreen />} />

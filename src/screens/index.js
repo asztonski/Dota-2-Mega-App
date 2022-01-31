@@ -1,6 +1,6 @@
-import HomeScreen from './HomeScreen';
-import StatScreen from './StatScreen';
-import HeroesScreen from './HeroesScreen';
-import ItemsScreen from './ItemsScreen';
+import HomeScreen from './Home/HomeScreen';
+import PlayersScreen from './Player/PlayersScreen';
+import HeroesScreen from './Hero/HeroesScreen';
+import ItemsScreen from './Item/ItemsScreen';
 
-export { HomeScreen, StatScreen, HeroesScreen, ItemsScreen };
+export { HomeScreen, PlayersScreen, HeroesScreen, ItemsScreen };
