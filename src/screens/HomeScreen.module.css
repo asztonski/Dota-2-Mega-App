@@ -1,0 +1,18 @@
+.HomeScreen {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+}
+
+.Title {
+  color: black;
+  font-size: 4rem;
+  text-align: center;
+}
+
+.ButtonContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1rem;
+}
