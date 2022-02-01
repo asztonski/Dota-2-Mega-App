@@ -1,0 +1,32 @@
+.PlayerDetails {
+  height: 100vh;
+  color: white;
+  background-color: #1c2541;
+}
+
+.PlayerOverview {
+  padding-top: 2rem;
+}
+
+/* Contains PlayerName and ProfileImage */
+.PlayerHeader {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.PlayerName {
+  font-size: 2rem;
+}
+
+.ProfileImage {
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: pink;
+}
