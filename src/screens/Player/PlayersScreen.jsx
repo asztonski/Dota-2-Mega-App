@@ -24,7 +24,12 @@ function PlayersScreen() {
     ? null
     : players.map((player) => {
         return (
-          <div className={styles.PlayerItem}>
+          <div
+            className={styles.PlayerItem}
+            onClick={(event) => {
+              navigate(`/players/${player['account_id']}`);
+            }}
+          >
             <div>Account ID: {player['account_id']}</div>
             <div>Rating: {player.rating}</div>
             <div>FH Unavailable?: {String(player['fh_unavailable'])}</div>
