@@ -59,7 +59,10 @@ export async function getPlayerPeers(id) {
   }
 }
 
-/* Appears to fetch "Totals" for various life-time statistics of the player, including. It is an array of similar-shaped objects, each having a field, n, and sum property. Example: [ { field: "kills", "n": 1512, "sum": 11890 } ]. What is "n"?? */
+/* Appears to fetch "Totals" for various life-time statistics of the player. 
+It is an array of similar-shaped objects, each having a field, n, and sum property. 
+Example: [ { field: "kills", "n": 1512, "sum": 11890 } ]. What is "n"?? 
+Some field values: kills, deaths, assists, kda, gold_per_min, xp_per_min, lane_efficiency_pct, duration, level, hero_damage, tower_damage, hero_healing, stuns, tower_kills, neutral_kills, courier_kills, purchase_tpscroll, purchase_ward_observer, purchase_rapier, pings, throw, comeback, stomp, loss, actions_per_min */
 export async function getPlayerTotals(id) {
   try {
     const response = await dotaAxios.get(`players/${id}/totals`);
