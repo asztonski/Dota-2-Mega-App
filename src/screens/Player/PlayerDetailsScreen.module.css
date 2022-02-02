@@ -1,11 +1,16 @@
 .PlayerDetails {
   height: 100vh;
   color: white;
-  background-color: #1c2541;
+}
+
+.Header {
+  font-size: 2rem;
+  text-align: center;
 }
 
 .PlayerOverview {
   padding-top: 2rem;
+  background-color: #1c2541;
 }
 
 /* Contains PlayerName and ProfileImage */
@@ -21,6 +26,31 @@
 }
 
 .ProfileImage {
+}
+
+.PlayerTotals {
+  background-color: #1c2541;
+  margin: 1rem;
+}
+
+.PlayerWinLoss {
+  background-color: #1c2541;
+  margin: 1rem;
+}
+
+.PlayerMatches {
+  background-color: #1c2541;
+  margin: 1rem;
+}
+
+.MatchList {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.PlayerMatch {
+  width: 20vw;
+  margin: 1rem;
 }
 
 a {
