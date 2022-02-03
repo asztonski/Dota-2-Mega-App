@@ -1,6 +1,7 @@
 .PlayerDetails {
-  height: 100vh;
+  min-height: 100vh;
   color: white;
+  background-color: rgb(28, 36, 45);
 }
 
 .Header {
@@ -9,8 +10,38 @@
 }
 
 .PlayerOverview {
-  padding-top: 2rem;
-  background-color: #1c2541;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  background-color: #2b2e35;
+  gap: 2rem;
+}
+
+.OverviewProfile {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.ProfileContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.OverviewWinLoss,
+.OverviewWinrate,
+.OverviewRanking {
+  text-align: center;
+}
+
+.ProfileHeader,
+.WinLossHeader,
+.WinrateHeader,
+.RankingHeader {
+  color: #ccc;
 }
 
 /* Contains PlayerName and ProfileImage */
@@ -29,17 +60,32 @@
 }
 
 .PlayerTotals {
-  background-color: #1c2541;
+  background-color: #2b2e35;
   margin: 1rem;
+}
+
+.TotalsContainer {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .PlayerWinLoss {
-  background-color: #1c2541;
+  background-color: #2b2e35;
   margin: 1rem;
 }
 
+.PlayerWins {
+  color: green;
+}
+
+.PlayerLosses {
+  color: red;
+}
+
 .PlayerMatches {
-  background-color: #1c2541;
+  background-color: #2b2e35;
   margin: 1rem;
 }
 
