@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import * as playerAPI from "../../apis/playerAPI";
-import styles from "./PlayerDetailsScreen.module.css";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import * as playerAPI from '../../apis/playerAPI';
+import heroes from '../../constants/heroes';
+import modes from '../../constants/modes';
+import styles from './PlayerDetailsScreen.module.css';
 
 // A Screen to show an individual Player's details
 // This will be found at the route: /players/:playerId
@@ -11,36 +13,43 @@ function PlayerDetailsScreen(props) {
   const [player, setPlayer] = useState();
 
   const fetchPlayerStats = async () => {
-    // TODO: Run these 4 (and counting) API calls at once, rather than waiting for one to finish before moving onto the next
-    const basePlayer = await playerAPI.getPlayer(playerId);
-    const playerTotals = await playerAPI.getPlayerTotals(playerId);
-    // The above is an oddly-shaped object, so we need to transform it
-    const playerTotalsTransformed = {};
+    // Run these 5 API calls at once via Promise.all, rather than waiting for one to finish before moving onto the next
+    const basePlayer = playerAPI.getPlayer(playerId);
+    const playerTotals = playerAPI.getPlayerTotals(playerId);
+    const playerWinLoss = playerAPI.getPlayerWinLoss(playerId);
+    const playerMatches = playerAPI.getPlayerRecentMatches(playerId);
+    const playerHeroes = playerAPI.getPlayerHeroes(playerId);
 
-    for (let i = 0; i < playerTotals.length; i++) {
-      playerTotalsTransformed[playerTotals[i].field] = playerTotals[i].sum;
-    }
+    Promise.all([
+      basePlayer,
+      playerTotals,
+      playerWinLoss,
+      playerMatches,
+      playerHeroes,
+    ]).then((values) => {
+      // playerTotals is an oddly-shaped object, so we need to transform it
+      const playerTotalsTransformed = {};
 
-    const playerWinLoss = await playerAPI.getPlayerWinLoss(playerId);
-    const playerMatches = await playerAPI.getPlayerRecentMatches(playerId);
-    const playerHeroes = await playerAPI.getPlayerHeroes(playerId);
+      for (let i = 0; i < values[1].length; i++) {
+        playerTotalsTransformed[values[1][i].field] = values[1][i].sum;
+      }
 
-    // Combine all the fetched data into one all-encomposes object!
-    setPlayer((prevPlayer) => ({
-      ...basePlayer,
-      totals: { ...playerTotalsTransformed },
-      ...playerWinLoss,
-      recentMatches: [...playerMatches],
-      heroes: [...playerHeroes],
-    }));
+      setPlayer((prevPlayer) => ({
+        ...values[0],
+        totals: { ...playerTotalsTransformed },
+        ...values[2],
+        recentMatches: [...values[3]],
+        heroes: [...values[4]],
+      }));
+    });
   };
 
   useEffect(() => {
     fetchPlayerStats();
-    console.log("Player", player);
+    console.log('Player', player);
   }, [playerId]);
 
-  if (!player) return "Loading Player Details";
+  if (!player) return 'Loading Player Details';
 
   const renderedHeroes = (
     <div className={styles.PlayerMatches}>
@@ -50,10 +59,10 @@ function PlayerDetailsScreen(props) {
           return (
             // TODO: Hero (name, last played), Matches, Win %, KDA
             // hero_id, last_played, games, win, with_games, with_win, against_games, against_win
-            <div key={hero["match_id"]} className={styles.PlayerMatch}>
+            <div key={hero['match_id']} className={styles.PlayerMatch}>
               <div>
-                Hero: {hero["hero_id"]}{" "}
-                <span>Last Played: {hero["last_played"]}</span>
+                Hero: {heroes[hero['hero_id']]}{' '}
+                <span>Last Played: {hero['last_played']}</span>
               </div>
               <div>Matches: ??</div>
               <div>Win %: {hero.win}</div>
@@ -72,11 +81,11 @@ function PlayerDetailsScreen(props) {
         {player.recentMatches.map((match) => {
           return (
             // TODO: Hero, Result, Type, Duration, KDA
-            <div key={match["match_id"]} className={styles.PlayerMatch}>
-              <div>Hero: {match["hero_id"]}</div>
+            <div key={match['match_id']} className={styles.PlayerMatch}>
+              <div>Hero: {heroes[match['hero_id']]}</div>
               {/* TODO: match["radiant_win"] shows if Radiant won the match...but how do we see if playe was on Radiant team? */}
-              <div>Result: {match["radiant_win"]}</div>
-              <div>Mode: {match["game_mode"]}</div>
+              <div>Result: {match['radiant_win']}</div>
+              <div>Mode: {modes[match['game_mode']]}</div>
               <div>Duration: {(match.duration / 60).toFixed(2)}</div>
               <div>
                 KDA: {match.kills}/{match.deaths}/{match.assists}
@@ -123,7 +132,15 @@ function PlayerDetailsScreen(props) {
 
         <div className={styles.OverviewWinrate}>
           <div className={styles.WinrateContainer}>
-            <div className={styles.Winrate}>
+            <div
+              className={styles.Winrate}
+              style={{
+                color:
+                  player.win / (player.win + player.lose) > 0.5
+                    ? 'green'
+                    : 'red',
+              }}
+            >
               {(player.win / (player.win + player.lose)).toFixed(2)}%
             </div>
             <div className={styles.WinrateHeader}>Winrate</div>
@@ -132,7 +149,7 @@ function PlayerDetailsScreen(props) {
 
         <div className={styles.OverviewRanking}>
           <div className={styles.RankingContainer}>
-            <div>~{player["mmr_estimate"].estimate}</div>
+            <div>~{player['mmr_estimate'].estimate}</div>
             <div className={styles.RankingHeader}>MMR</div>
           </div>
         </div>
