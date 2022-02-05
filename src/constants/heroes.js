@@ -1,3 +1,5 @@
+/* Helps us map an ID to a Hero's name. Many OpenDOTA results give us a "hero_id" int instead of the Hero's actual name.
+So we can use this as a look-up table */
 const heroes = {
   1: 'Anti-Mage',
   2: 'Axe',

@@ -1,3 +1,5 @@
+/* Helps us map an ID to a Mode's name. Many OpenDOTA results give us a "mode_id" int instead of the Mode's actual name.
+So we can use this as a look-up table */
 const modes = {
   0: 'Unknown',
   1: 'All Pick',
