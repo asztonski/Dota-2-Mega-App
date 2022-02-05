@@ -56,6 +56,33 @@ function PlayerDetailsScreen(props) {
 
   if (!player) return 'Loading Player Details';
 
+  const highestDuration = (matches) => {
+    let highest = 0;
+    matches.forEach((match) => {
+      if (match.duration > highest) highest = match.duration;
+    });
+
+    return highest;
+  };
+
+  const highestMatchCount = (heroes) => {
+    let highest = 0;
+    heroes.slice(0, 10).forEach((hero) => {
+      if (hero.games > highest) highest = hero.games;
+    });
+
+    return highest;
+  };
+
+  const highestWinPercent = (heroes) => {
+    let highest = 0;
+    heroes.slice(0, 10).forEach((hero) => {
+      if (hero.win / hero.games > highest) highest = hero.win / hero.games;
+    });
+
+    return highest;
+  };
+
   const renderedHeroes = (
     <div className={styles.PlayerHeroes}>
       <div className={styles.Header}>Most Played Heroes</div>
@@ -72,6 +99,8 @@ function PlayerDetailsScreen(props) {
           <HeroDetail
             hero={hero}
             bgColor={index % 2 === 0 ? '#2d3741' : '#353f49'}
+            highestMatchCount={highestMatchCount(player.heroes)}
+            highestWinPercent={highestWinPercent(player.heroes)}
           />
         ))}
       </div>
@@ -93,6 +122,7 @@ function PlayerDetailsScreen(props) {
           <MatchDetail
             match={match}
             bgColor={index % 2 === 0 ? '#2d3741' : '#353f49'}
+            highestDuration={highestDuration(player.recentMatches)}
           />
         ))}
       </div>
