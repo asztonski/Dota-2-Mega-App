@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as playerAPI from '../../apis/playerAPI';
 import { useNavigate } from 'react-router-dom';
-import styles from './PlayersScreen.module.css';
+import styles from './PlayersScreen.module.scss';
 
 function PlayersScreen() {
   const [playerSearchValue, setPlayerSearchValue] = useState('159842854');

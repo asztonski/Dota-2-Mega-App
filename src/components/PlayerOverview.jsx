@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './PlayerOverview.module.css';
+import styles from './PlayerOverview.module.scss';
 
 function PlayerOverview({ player }) {
   return (

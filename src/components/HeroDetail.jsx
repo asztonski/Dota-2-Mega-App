@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './HeroDetail.module.css';
 import LastUsed from './LastUsed';
 import heroes from '../constants/heroes';
 import StatBar from './StatBar';
+import styles from './HeroDetail.module.scss';
 
 function HeroDetail({
   hero,

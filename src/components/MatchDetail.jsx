@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from './MatchDetail.module.css';
 import modes from '../constants/modes';
 import heroes from '../constants/heroes';
 import { timeHelper } from '../helpers/helpers';
 import StatBar from '../components/StatBar';
 import LastUsed from './LastUsed';
 import { isRadiant } from '../helpers/helpers';
+import styles from './MatchDetail.module.scss';
 
 const isPlayerWinner = (match) => {
   const isPlayerRadiant = isRadiant(match['player_slot']);

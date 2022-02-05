@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as heroAPI from '../../apis/heroAPI';
-import styles from './HeroesScreen.module.css';
+import styles from './HeroesScreen.module.scss';
 
 function HeroesScreen() {
   const [heroes, setHeroes] = useState('');

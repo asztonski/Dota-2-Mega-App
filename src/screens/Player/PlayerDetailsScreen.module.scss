@@ -2,6 +2,24 @@
   min-height: 100vh;
   color: white;
   background-color: #1c242d;
+  padding: 2rem;
+
+  /* New for Grid refactoring */
+  display: grid;
+  grid-template-areas:
+    'overview overview overview overview overview'
+    'heroes heroes heroes heroes lifetime'
+    'matches matches matches matches lifetime';
+  /* gap: 1rem; */
+  justify-content: space-between;
+
+  @media screen and (max-width: 990px) {
+    grid-template-areas:
+      'overview overview overview overview overview'
+      'heroes heroes heroes heroes heroes'
+      'matches matches matches matches matches'
+      'lifetime lifetime lifetime lifetime lifetime';
+  }
 }
 
 .Header {
@@ -41,16 +59,14 @@
 }
 
 .PlayerHeroes {
-  display: flex;
-  flex-direction: column;
-  margin: 0 2rem;
+  /* margin: 0 2rem; */
+
+  /* New for Grid refactoring */
+  grid-area: heroes;
 }
 
 .HeroList {
-  display: flex;
-  flex-direction: column;
   background-color: #242f39;
-  /* 2e3740; */
   margin: 0.5rem 0;
 }
 
@@ -65,15 +81,17 @@
 }
 
 .PlayerMatches {
-  display: flex;
-  flex-direction: column;
-  margin: 0 2rem;
+  /* margin: 0 2rem; */
+
+  /* New for Grid refactoring */
+  grid-area: matches;
 }
 
 .MatchList {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   background-color: #242f39;
+  margin: 0.5rem 0;
 }
 
 .MatchCategories {
@@ -84,6 +102,15 @@
 .MatchCategories > div {
   flex: 1 1 0px;
   font-weight: 800;
+}
+
+.PlayerLifetime {
+  /* margin: 0 2rem; */
+  grid-area: lifetime;
+}
+
+.LifetimeList {
+  /* margin: 0.5rem 0; */
 }
 
 a {

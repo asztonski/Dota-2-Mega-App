@@ -3,10 +3,10 @@ import { useParams } from 'react-router-dom';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en.json';
 import * as playerAPI from '../../apis/playerAPI';
-import styles from './PlayerDetailsScreen.module.css';
 import HeroDetail from '../../components/HeroDetail';
 import PlayerOverview from '../../components/PlayerOverview';
 import MatchDetail from '../../components/MatchDetail';
+import styles from './PlayerDetailsScreen.module.scss';
 
 TimeAgo.addDefaultLocale(en);
 
@@ -129,6 +129,26 @@ function PlayerDetailsScreen(props) {
     </div>
   );
 
+  const renderedLifetime = (
+    <div className={styles.PlayerLifetime}>
+      <div className={styles.Header}>Lifetime Stats</div>
+      <div className={styles.MatchList}>
+        <div className={styles.MatchCategories}>
+          <div>Overview</div>
+          <div>Mataches</div>
+          <div>Win Rate</div>
+        </div>
+        {player.recentMatches.slice(0, 10).map((match, index) => (
+          <MatchDetail
+            match={match}
+            bgColor={index % 2 === 0 ? '#2d3741' : '#353f49'}
+            highestDuration={highestDuration(player.recentMatches)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+
   // TODO: "Overview" section (or even component?): Renders: Render win-loss numbers, winrate %, last match (hours ago), Rank (as an icon?)
   // TODO: "Most Played Heroes (All Time)": Renders top 10 heroes by # of matches. Shows hero name, last time ago on that hero, Win %, KDA, Role, Lane
   // TODO: "Latest Matches": Renders last 10 matches. Shows hero played, skill level, result (win/lose), Type, Duration, and KDA
@@ -143,6 +163,7 @@ function PlayerDetailsScreen(props) {
           <div>Assists: {player.totals.assists.toLocaleString()}</div>
         </div>
       </div> */}
+      {renderedLifetime}
       {renderedHeroes}
       {renderedMatches}
     </div>

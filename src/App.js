@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   HomeScreen,
   PlayersScreen,
+  PlayerDetailsScreen,
   HeroesScreen,
   ItemsScreen,
 } from './screens';
-import './App.css';
-import PlayerDetailsScreen from './screens/Player/PlayerDetailsScreen';
+import './App.scss';
 
 function App() {
   return (
