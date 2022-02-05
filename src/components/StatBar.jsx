@@ -1,10 +1,15 @@
 import React from 'react';
 
-function StatBar({ children, fillColor }) {
+function StatBar({ children, fillColor, percentFilled }) {
   return (
     <div
       className='StatBar'
-      style={{ backgroundColor: fillColor, width: '100%', height: '20px' }}
+      style={{
+        backgroundColor: fillColor,
+        width: `${percentFilled}%`,
+        height: '10px',
+        marginTop: '10px',
+      }}
     >
       {children}
     </div>
