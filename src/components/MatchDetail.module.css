@@ -15,6 +15,10 @@
   flex-direction: column;
 }
 
+.HeroName {
+  color: #a9cf54;
+}
+
 .ResultContainer {
   display: flex;
   flex-direction: column;

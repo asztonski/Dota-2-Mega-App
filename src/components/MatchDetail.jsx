@@ -17,7 +17,7 @@ const isPlayerWinner = (match) => {
   return !isRadiantWin;
 };
 
-function MatchDetail({ match, bgColor }) {
+function MatchDetail({ match, bgColor, highestDuration }) {
   if (!match) {
     return 'Loading Match Result...';
   }
@@ -30,14 +30,14 @@ function MatchDetail({ match, bgColor }) {
       style={{ backgroundColor: bgColor }}
     >
       <div className={styles.Overview}>
-        <div>{heroes[match['hero_id']]}</div>
+        <div className={styles.HeroName}>{heroes[match['hero_id']]}</div>
         <div>???</div>
       </div>
       <div className={styles.ResultContainer}>
         <div style={{ color: isPlayerWinner(match) ? 'green' : 'red' }}>
-          Result: {isPlayerWinner(match) ? 'Won Match' : 'Lost Match'}
+          {isPlayerWinner(match) ? 'Won Match' : 'Lost Match'}
         </div>
-        <LastUsed date={Date.now()} />
+        <LastUsed date={match['start_time']} />
       </div>
       <div className={styles.TypeContainer}>
         <div>???</div>
@@ -45,13 +45,17 @@ function MatchDetail({ match, bgColor }) {
       </div>
       <div className={styles.DurationContainer}>
         <div>{timeHelper(match.duration)}</div>
-        <StatBar fillColor='white' />
+        <StatBar
+          fillColor='white'
+          percentFilled={(match.duration / highestDuration) * 100}
+        />
       </div>
       <div className={styles.KDAContainer}>
         <div>
           {match.kills}/{match.deaths}/{match.assists}
         </div>
-        <StatBar fillColor='red' />
+        {/* TODO: Fill percentage */}
+        <StatBar fillColor='red' percentFilled={(1 / 1) * 100} />
       </div>
     </div>
   );

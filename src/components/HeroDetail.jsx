@@ -4,7 +4,13 @@ import LastUsed from './LastUsed';
 import heroes from '../constants/heroes';
 import StatBar from './StatBar';
 
-function HeroDetail({ hero, bgColor }) {
+function HeroDetail({
+  hero,
+  bgColor,
+  highestMatchCount,
+  highestWinPercent,
+  highestKDA,
+}) {
   return (
     <div
       key={hero['match_id']}
@@ -12,28 +18,37 @@ function HeroDetail({ hero, bgColor }) {
       style={{ backgroundColor: bgColor }}
     >
       <div className={styles.Overview}>
-        <div>{heroes[hero['hero_id']]}</div>
+        <div className={styles.HeroName}>{heroes[hero['hero_id']]}</div>
         <LastUsed date={hero['last_played']} />
       </div>
       <div className={styles.MatchesContainer}>
         <div>{hero.games}</div>
-        <StatBar fillColor='red' />
+        <StatBar
+          fillColor='red'
+          percentFilled={(hero.games / highestMatchCount) * 100}
+        />
       </div>
       <div className={styles.WinContainer}>
-        <div>{((hero.win / hero.games) * 100).toFixed(2)}</div>
-        <StatBar fillColor='green' />
+        <div>{((hero.win / hero.games) * 100).toFixed(2)}%</div>
+        <StatBar
+          fillColor='green'
+          percentFilled={(100 * (hero.win / hero.games)) / highestWinPercent}
+        />
       </div>
       <div className={styles.KDAContainer}>
         <div>??/??/??</div>
-        <StatBar fillColor='orange' />
+        {/* TODO: Calculate percentFilled */}
+        <StatBar fillColor='orange' percentFilled={100} />
       </div>
       <div className={styles.RoleContainer}>
         <div>???</div>
-        <StatBar fillColor='darkorange' />
+        {/* TODO: Calculate percentFilled */}
+        <StatBar fillColor='darkorange' percentFilled={100} />
       </div>
       <div className={styles.LaneContainer}>
         <div>???</div>
-        <StatBar fillColor='purple' />
+        {/* TODO: Calculate percentFilled */}
+        <StatBar fillColor='purple' percentFilled={100} />
       </div>
     </div>
   );
