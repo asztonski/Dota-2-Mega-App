@@ -1,5 +1,5 @@
 // Converts an amount of seconds into an hour:minute:seconds formatted string
-const timeHelper = (timeInSeconds) => {
+export const timeHelper = (timeInSeconds) => {
   const dateObj = new Date(timeInSeconds * 1000);
   const hours = dateObj.getUTCHours();
   const minutes = dateObj.getUTCMinutes();
@@ -15,4 +15,4 @@ const timeHelper = (timeInSeconds) => {
   return timeString;
 };
 
-export { timeHelper };
+export const isRadiant = (playerSlot) => playerSlot < 128;
