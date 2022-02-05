@@ -51,8 +51,8 @@ function PlayerOverview({ player }) {
 
       <div className={styles.OverviewRanking}>
         <div className={styles.RankingContainer}>
-          <div>~{player['mmr_estimate'].estimate}</div>
-          <div className={styles.RankingHeader}>MMR</div>
+          <div>{player['leaderboard_rank']}</div>
+          <div className={styles.RankingHeader}>Rank #</div>
         </div>
       </div>
     </div>
