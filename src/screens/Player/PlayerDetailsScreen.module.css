@@ -1,34 +1,12 @@
 .PlayerDetails {
   min-height: 100vh;
   color: white;
-  background-color: rgb(28, 36, 45);
+  background-color: #1c242d;
 }
 
 .Header {
   font-size: 2rem;
   text-align: center;
-}
-
-.PlayerOverview {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 0;
-  background-color: #2b2e35;
-  gap: 2rem;
-}
-
-.OverviewProfile {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-}
-
-.ProfileContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .OverviewWinLoss,
@@ -37,31 +15,9 @@
   text-align: center;
 }
 
-.ProfileHeader,
-.WinLossHeader,
-.WinrateHeader,
-.RankingHeader {
-  color: #ccc;
-}
-
-/* Contains PlayerName and ProfileImage */
-.PlayerHeader {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  align-items: center;
-}
-
-.PlayerName {
-  font-size: 2rem;
-}
-
-.ProfileImage {
-}
-
 .PlayerTotals {
-  background-color: #2b2e35;
-  margin: 1rem;
+  background-color: #2e3740;
+  margin: 1rem 2rem;
 }
 
 .TotalsContainer {
@@ -72,7 +28,7 @@
 }
 
 .PlayerWinLoss {
-  background-color: #2b2e35;
+  background-color: #2e3740;
   margin: 1rem;
 }
 
@@ -84,19 +40,50 @@
   color: red;
 }
 
+.PlayerHeroes {
+  display: flex;
+  flex-direction: column;
+  margin: 0 2rem;
+}
+
+.HeroList {
+  display: flex;
+  flex-direction: column;
+  background-color: #242f39;
+  /* 2e3740; */
+  margin: 0.5rem 0;
+}
+
+.HeroesCategories {
+  display: flex;
+  padding: 1rem;
+}
+
+.HeroesCategories > div {
+  flex: 1 1 0px;
+  font-weight: 800;
+}
+
 .PlayerMatches {
-  background-color: #2b2e35;
-  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0 2rem;
 }
 
 .MatchList {
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: column;
+  background-color: #242f39;
 }
 
-.PlayerMatch {
-  width: 20vw;
-  margin: 1rem;
+.MatchCategories {
+  display: flex;
+  padding: 1rem;
+}
+
+.MatchCategories > div {
+  flex: 1 1 0px;
+  font-weight: 800;
 }
 
 a {

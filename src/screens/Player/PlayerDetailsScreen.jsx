@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en.json';
 import * as playerAPI from '../../apis/playerAPI';
-import heroes from '../../constants/heroes';
-import modes from '../../constants/modes';
 import styles from './PlayerDetailsScreen.module.css';
+import HeroDetail from '../../components/HeroDetail';
+import PlayerOverview from '../../components/PlayerOverview';
+import MatchDetail from '../../components/MatchDetail';
+
+TimeAgo.addDefaultLocale(en);
 
 // A Screen to show an individual Player's details
 // This will be found at the route: /players/:playerId
@@ -52,24 +57,23 @@ function PlayerDetailsScreen(props) {
   if (!player) return 'Loading Player Details';
 
   const renderedHeroes = (
-    <div className={styles.PlayerMatches}>
+    <div className={styles.PlayerHeroes}>
       <div className={styles.Header}>Most Played Heroes</div>
-      <div className={styles.MatchList}>
-        {player.heroes.slice(0, 10).map((hero) => {
-          return (
-            // TODO: Hero (name, last played), Matches, Win %, KDA
-            // hero_id, last_played, games, win, with_games, with_win, against_games, against_win
-            <div key={hero['match_id']} className={styles.PlayerMatch}>
-              <div>
-                Hero: {heroes[hero['hero_id']]}{' '}
-                <span>Last Played: {hero['last_played']}</span>
-              </div>
-              <div>Matches: ??</div>
-              <div>Win %: {hero.win}</div>
-              <div>KDA: ??/??/??</div>
-            </div>
-          );
-        })}
+      <div className={styles.HeroList}>
+        <div className={styles.HeroesCategories}>
+          <div>Hero</div>
+          <div>Matches</div>
+          <div>Win %</div>
+          <div>KDA</div>
+          <div>Role</div>
+          <div>Lane</div>
+        </div>
+        {player.heroes.slice(0, 10).map((hero, index) => (
+          <HeroDetail
+            hero={hero}
+            bgColor={index % 2 === 0 ? '#2d3741' : '#353f49'}
+          />
+        ))}
       </div>
     </div>
   );
@@ -78,21 +82,19 @@ function PlayerDetailsScreen(props) {
     <div className={styles.PlayerMatches}>
       <div className={styles.Header}>Latest Matches</div>
       <div className={styles.MatchList}>
-        {player.recentMatches.map((match) => {
-          return (
-            // TODO: Hero, Result, Type, Duration, KDA
-            <div key={match['match_id']} className={styles.PlayerMatch}>
-              <div>Hero: {heroes[match['hero_id']]}</div>
-              {/* TODO: match["radiant_win"] shows if Radiant won the match...but how do we see if playe was on Radiant team? */}
-              <div>Result: {match['radiant_win']}</div>
-              <div>Mode: {modes[match['game_mode']]}</div>
-              <div>Duration: {(match.duration / 60).toFixed(2)}</div>
-              <div>
-                KDA: {match.kills}/{match.deaths}/{match.assists}
-              </div>
-            </div>
-          );
-        })}
+        <div className={styles.MatchCategories}>
+          <div>Hero</div>
+          <div>Result</div>
+          <div>Type</div>
+          <div>Duration</div>
+          <div>KDA</div>
+        </div>
+        {player.recentMatches.slice(0, 10).map((match, index) => (
+          <MatchDetail
+            match={match}
+            bgColor={index % 2 === 0 ? '#2d3741' : '#353f49'}
+          />
+        ))}
       </div>
     </div>
   );
@@ -102,70 +104,16 @@ function PlayerDetailsScreen(props) {
   // TODO: "Latest Matches": Renders last 10 matches. Shows hero played, skill level, result (win/lose), Type, Duration, and KDA
   return (
     <div className={styles.PlayerDetails}>
-      <div className={styles.PlayerOverview}>
-        <div className={styles.OverviewProfile}>
-          <div className={styles.ProfileImageContainer}>
-            <img
-              className={styles.ProfileImage}
-              src={player.profile.avatarfull}
-              alt={`Avatar for ${player.profile.personaname}`}
-            />
-          </div>
-          <div className={styles.ProfileContainer}>
-            <div className={styles.PlayerName}>
-              {player.profile.personaname}
-            </div>
-            <div className={styles.ProfileHeader}>Overview</div>
-            <div>
-              <a href={player.profile.profileurl}>Steam</a>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.OverviewWinLoss}>
-          <div className={styles.WinLossContainer}>
-            <span className={styles.PlayerWins}>{player.win}</span>-
-            <span className={styles.PlayerLosses}>{player.lose}</span>
-            <div className={styles.WinLossHeader}>Record</div>
-          </div>
-        </div>
-
-        <div className={styles.OverviewWinrate}>
-          <div className={styles.WinrateContainer}>
-            <div
-              className={styles.Winrate}
-              style={{
-                color:
-                  player.win / (player.win + player.lose) > 0.5
-                    ? 'green'
-                    : 'red',
-              }}
-            >
-              {(player.win / (player.win + player.lose)).toFixed(2)}%
-            </div>
-            <div className={styles.WinrateHeader}>Winrate</div>
-          </div>
-        </div>
-
-        <div className={styles.OverviewRanking}>
-          <div className={styles.RankingContainer}>
-            <div>~{player['mmr_estimate'].estimate}</div>
-            <div className={styles.RankingHeader}>MMR</div>
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.PlayerTotals}>
+      <PlayerOverview player={player} />
+      {/* <div className={styles.PlayerTotals}>
         <div className={styles.Header}>Player Totals</div>
         <div className={styles.TotalsContainer}>
-          <div>Kills: {player.totals.kills}</div>
-          <div>Deaths: {player.totals.deaths}</div>
-          <div>Assists: {player.totals.assists}</div>
+          <div>Kills: {player.totals.kills.toLocaleString()}</div>
+          <div>Deaths: {player.totals.deaths.toLocaleString()}</div>
+          <div>Assists: {player.totals.assists.toLocaleString()}</div>
         </div>
-      </div>
-
+      </div> */}
       {renderedHeroes}
-
       {renderedMatches}
     </div>
   );
