@@ -1,0 +1,44 @@
+.PlayerOverview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  margin: 0 2rem;
+  background-color: #2e3740;
+  gap: 2rem;
+}
+
+.OverviewProfile {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.ProfileContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contains PlayerName and ProfileImage */
+.PlayerHeader {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.PlayerName {
+  font-size: 2rem;
+}
+
+.ProfileImage {
+}
+
+.ProfileHeader,
+.WinLossHeader,
+.WinrateHeader,
+.RankingHeader {
+  color: #abafa0;
+}
