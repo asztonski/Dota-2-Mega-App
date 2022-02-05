@@ -1,0 +1,40 @@
+.MatchDetail {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding: 1rem;
+  margin: 0 0.5rem;
+}
+
+.MatchDetail > div {
+  flex: 1 1 0px;
+}
+
+.Overview {
+  display: flex;
+  flex-direction: column;
+}
+
+.ResultContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.TypeContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.DurationContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.KDAContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.Bar {
+  background-color: green;
+}
