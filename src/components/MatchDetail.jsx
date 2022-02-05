@@ -5,8 +5,23 @@ import heroes from '../constants/heroes';
 import { timeHelper } from '../helpers/helpers';
 import StatBar from '../components/StatBar';
 import LastUsed from './LastUsed';
+import { isRadiant } from '../helpers/helpers';
+
+const isPlayerWinner = (match) => {
+  const isPlayerRadiant = isRadiant(match['player_slot']);
+  const isRadiantWin = match['radiant_win'];
+
+  if (isPlayerRadiant) {
+    return isRadiantWin;
+  }
+  return !isRadiantWin;
+};
 
 function MatchDetail({ match, bgColor }) {
+  if (!match) {
+    return 'Loading Match Result...';
+  }
+
   return (
     // TODO: Hero, Result, Type, Duration, KDA
     <div
@@ -19,8 +34,9 @@ function MatchDetail({ match, bgColor }) {
         <div>???</div>
       </div>
       <div className={styles.ResultContainer}>
-        {/* TODO: match["radiant_win"] shows if Radiant won the match...but how do we see if player was on Radiant team? */}
-        <div>Result: {match['radiant_win']}</div>
+        <div style={{ color: isPlayerWinner(match) ? 'green' : 'red' }}>
+          Result: {isPlayerWinner(match) ? 'Won Match' : 'Lost Match'}
+        </div>
         <LastUsed date={Date.now()} />
       </div>
       <div className={styles.TypeContainer}>
