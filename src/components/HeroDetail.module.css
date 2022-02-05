@@ -1,0 +1,41 @@
+.HeroDetail {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding: 1rem;
+  margin: 0 0.5rem;
+}
+
+.HeroDetail > div {
+  flex: 1 1 0px;
+}
+
+.Overview {
+  display: flex;
+  flex-direction: column;
+}
+
+.MatchesContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.WinContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.KDAContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.RoleContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.LaneContainer {
+  display: flex;
+  flex-direction: column;
+}
