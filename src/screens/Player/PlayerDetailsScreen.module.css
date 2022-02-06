@@ -1,0 +1,141 @@
+.PlayerDetails {
+  min-height: 100vh;
+  color: white;
+  background-color: #1c242d;
+  padding: 2rem;
+  /* New for Grid refactoring */
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: 'overview overview overview overview overview' 'heroes heroes heroes heroes lifetime' 'matches matches matches matches lifetime';
+  /* gap: 1rem; */
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media screen and (max-width: 990px) {
+  .PlayerDetails {
+        grid-template-areas: 'overview overview overview overview overview' 'heroes heroes heroes heroes heroes' 'matches matches matches matches matches' 'lifetime lifetime lifetime lifetime lifetime';
+  }
+}
+
+.Header {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.OverviewWinLoss,
+.OverviewWinrate,
+.OverviewRanking {
+  text-align: center;
+}
+
+.PlayerTotals {
+  background-color: #2e3740;
+  margin: 1rem 2rem;
+}
+
+.TotalsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 2rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.PlayerWinLoss {
+  background-color: #2e3740;
+  margin: 1rem;
+}
+
+.PlayerWins {
+  color: green;
+}
+
+.PlayerLosses {
+  color: red;
+}
+
+.PlayerHeroes {
+  /* margin: 0 2rem; */
+  /* New for Grid refactoring */
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
+  grid-area: heroes;
+}
+
+.HeroList {
+  background-color: #242f39;
+  margin: 0.5rem 0;
+}
+
+.HeroesCategories {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem;
+}
+
+.HeroesCategories > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0px;
+  font-weight: 800;
+}
+
+.PlayerMatches {
+  /* margin: 0 2rem; */
+  /* New for Grid refactoring */
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
+  grid-area: matches;
+}
+
+.MatchList {
+  /* display: flex;
+  flex-direction: column; */
+  background-color: #242f39;
+  margin: 0.5rem 0;
+}
+
+.MatchCategories {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem;
+}
+
+.MatchCategories > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0px;
+  font-weight: 800;
+}
+
+.PlayerLifetime {
+  /* margin: 0 2rem; */
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 5;
+  grid-area: lifetime;
+}
+
+.LifetimeList {
+  /* margin: 0.5rem 0; */
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: pink;
+}
+/*# sourceMappingURL=PlayerDetailsScreen.module.css.map */

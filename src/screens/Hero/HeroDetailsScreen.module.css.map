@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAGA,AAAA,aAAa,CAAC;EACZ,KAAK,EAAE,IAAI;CACZ",
+    "sources": [
+        "HeroDetailsScreen.module.scss"
+    ],
+    "names": [],
+    "file": "HeroDetailsScreen.module.css"
+}

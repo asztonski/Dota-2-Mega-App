@@ -1,0 +1,54 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+html {
+  overflow: hidden;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  background: #A4230D;
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #A4230D;
+}
+
+::-moz-selection {
+  background-color: #A4230D;
+  color: #fff;
+}
+
+::selection {
+  background-color: #A4230D;
+  color: #fff;
+}
+
+::-moz-selection {
+  background-color: #A4230D;
+  color: #fff;
+}
+
+@font-face {
+  font-family: 'Goudy Medium';
+  src: url("assets/fonts/OPTIwtcGoudy-Medium.otf");
+}
+
+a {
+  color: #A4230D;
+  background-color: #344577;
+}
+/*# sourceMappingURL=App.css.map */

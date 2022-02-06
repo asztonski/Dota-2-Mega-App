@@ -1,0 +1,64 @@
+.HomeScreen {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1rem 2rem;
+}
+
+.HomeScreen .Title {
+  color: black;
+  font-size: 4rem;
+  text-align: center;
+}
+
+.HomeScreen .ButtonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  height: 100vh;
+  -webkit-column-gap: 10px;
+          column-gap: 10px;
+  row-gap: 10px;
+}
+
+.HomeScreen .ButtonContainer a.HomeButton {
+  padding: 20vh 20vw;
+  margin: 10px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 3rem;
+  border-radius: 10px;
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  text-decoration: none;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.HomeScreen .ButtonContainer a.HomeButton:hover {
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
+
+.HomeScreen .ButtonContainer a.HomeButton:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+          box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+}
+/*# sourceMappingURL=HomeScreen.module.css.map */
