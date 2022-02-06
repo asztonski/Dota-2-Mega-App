@@ -3,9 +3,9 @@ import { useParams } from 'react-router-dom';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en.json';
 import * as playerAPI from '../../apis/playerAPI';
-import HeroDetail from '../../components/HeroDetail';
-import PlayerOverview from '../../components/PlayerOverview';
-import MatchDetail from '../../components/MatchDetail';
+import HeroDetail from '../../components/HeroDetail/HeroDetail';
+import PlayerOverview from '../../components/PlayerOverview/PlayerOverview';
+import MatchDetail from '../../components/MatchDetail/MatchDetail';
 import styles from './PlayerDetailsScreen.module.scss';
 
 TimeAgo.addDefaultLocale(en);
@@ -17,7 +17,7 @@ function PlayerDetailsScreen(props) {
 
   const [player, setPlayer] = useState();
 
-  const fetchPlayerStats = async () => {
+  const fetchPlayerStats = async function () {
     // Run these 5 API calls at once via Promise.all, rather than waiting for one to finish before moving onto the next
     const basePlayer = playerAPI.getPlayer(playerId);
     const playerTotals = playerAPI.getPlayerTotals(playerId);
@@ -39,22 +39,24 @@ function PlayerDetailsScreen(props) {
         playerTotalsTransformed[values[1][i].field] = values[1][i].sum;
       }
 
-      setPlayer((prevPlayer) => ({
+      const transformedPlayerObject = {
         ...values[0],
         totals: { ...playerTotalsTransformed },
         ...values[2],
         recentMatches: [...values[3]],
         heroes: [...values[4]],
-      }));
+      };
+
+      setPlayer(transformedPlayerObject);
     });
   };
 
   useEffect(() => {
     fetchPlayerStats();
-    console.log('Player', player);
   }, [playerId]);
 
-  if (!player) return 'Loading Player Details';
+  if (!player || !player.heroes || !player.recentMatches)
+    return <div className={styles.Loading}>Loading Player Details</div>;
 
   const highestDuration = (matches) => {
     let highest = 0;
@@ -97,6 +99,7 @@ function PlayerDetailsScreen(props) {
         </div>
         {player.heroes.slice(0, 10).map((hero, index) => (
           <HeroDetail
+            key={hero['hero_id']}
             hero={hero}
             bgColor={index % 2 === 0 ? '#2d3741' : '#353f49'}
             highestMatchCount={highestMatchCount(player.heroes)}
@@ -120,6 +123,7 @@ function PlayerDetailsScreen(props) {
         </div>
         {player.recentMatches.slice(0, 10).map((match, index) => (
           <MatchDetail
+            key={match['match_id']}
             match={match}
             bgColor={index % 2 === 0 ? '#2d3741' : '#353f49'}
             highestDuration={highestDuration(player.recentMatches)}
@@ -140,6 +144,7 @@ function PlayerDetailsScreen(props) {
         </div>
         {player.recentMatches.slice(0, 10).map((match, index) => (
           <MatchDetail
+            key={match['match_id']}
             match={match}
             bgColor={index % 2 === 0 ? '#2d3741' : '#353f49'}
             highestDuration={highestDuration(player.recentMatches)}

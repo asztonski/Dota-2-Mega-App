@@ -1,7 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import styles from './PlayerOverview.module.scss';
 
 function PlayerOverview({ player }) {
+  console.log('Player Overview', player);
   return (
     <div className={styles.PlayerOverview}>
       <div className={styles.OverviewProfile}>
@@ -40,7 +43,9 @@ function PlayerOverview({ player }) {
             className={styles.Winrate}
             style={{
               color:
-                player.win / (player.win + player.lose) > 0.5 ? 'green' : 'red',
+                player.win / (player.win + player.lose) > 0.5
+                  ? '#a9cf54'
+                  : '#fd7272',
             }}
           >
             {((player.win / (player.win + player.lose)) * 100).toFixed(2)}%
@@ -58,5 +63,10 @@ function PlayerOverview({ player }) {
     </div>
   );
 }
+
+PlayerOverview.propTypes = {
+  /** Player to be shown the stats of */
+  player: PropTypes.object, // TODO: Define the exact shape of the player object
+};
 
 export default PlayerOverview;

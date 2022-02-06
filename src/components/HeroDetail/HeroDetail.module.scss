@@ -1,12 +1,13 @@
-.MatchDetail {
+.HeroDetail {
   display: flex;
   flex-direction: row;
   gap: 2rem;
   padding: 1rem;
   margin: 0 0.5rem;
+  color: white;
 }
 
-.MatchDetail > div {
+.HeroDetail > div {
   flex: 1 1 0px;
 }
 
@@ -19,17 +20,12 @@
   color: #a9cf54;
 }
 
-.ResultContainer {
+.MatchesContainer {
   display: flex;
   flex-direction: column;
 }
 
-.TypeContainer {
-  display: flex;
-  flex-direction: column;
-}
-
-.DurationContainer {
+.WinContainer {
   display: flex;
   flex-direction: column;
 }
@@ -39,6 +35,12 @@
   flex-direction: column;
 }
 
-.Bar {
-  background-color: green;
+.RoleContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.LaneContainer {
+  display: flex;
+  flex-direction: column;
 }

@@ -1,8 +1,15 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('Button texts are displayed', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+  const playersText = screen.queryByText('Players');
+  const heroesText = screen.queryByText('Heroes');
+  const itemsText = screen.queryByText('Items');
+  const esportsText = screen.queryByText('eSports');
+  expect(playersText).toBeVisible();
+  expect(heroesText).toBeVisible();
+  expect(itemsText).toBeVisible();
+  expect(esportsText).toBeVisible();
 });

@@ -3,9 +3,10 @@
   justify-content: center;
   align-items: center;
   padding: 2rem 0;
-  /* margin: 0 2rem; */
+  color: white;
   background-color: #2e3740;
   gap: 2rem;
+  font-weight: 800;
 
   /* New for Grid refactoring */
   grid-area: overview;
@@ -24,19 +25,12 @@
   align-items: center;
 }
 
-/* Contains PlayerName and ProfileImage */
-.PlayerHeader {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  align-items: center;
-}
-
 .PlayerName {
   font-size: 2rem;
 }
 
 .ProfileImage {
+  border-radius: 15px;
 }
 
 .ProfileHeader,
@@ -44,4 +38,17 @@
 .WinrateHeader,
 .RankingHeader {
   color: #abafa0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+
+  &:visited {
+    color: rgb(126, 252, 224);
+  }
+}
+
+a:hover {
+  border-bottom: 2px solid white;
 }
