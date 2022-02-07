@@ -99,7 +99,7 @@ function PlayerDetailsScreen(props) {
         </div>
         {player.heroes.slice(0, 10).map((hero, index) => (
           <HeroDetail
-            key={hero['hero_id']}
+            key={hero.hero_id}
             hero={hero}
             bgColor={index % 2 === 0 ? '#2d3741' : '#353f49'}
             highestMatchCount={highestMatchCount(player.heroes)}
@@ -123,7 +123,7 @@ function PlayerDetailsScreen(props) {
         </div>
         {player.recentMatches.slice(0, 10).map((match, index) => (
           <MatchDetail
-            key={match['match_id']}
+            key={match.match_id}
             match={match}
             bgColor={index % 2 === 0 ? '#2d3741' : '#353f49'}
             highestDuration={highestDuration(player.recentMatches)}
@@ -144,7 +144,7 @@ function PlayerDetailsScreen(props) {
         </div>
         {player.recentMatches.slice(0, 10).map((match, index) => (
           <MatchDetail
-            key={match['match_id']}
+            key={match.match_id}
             match={match}
             bgColor={index % 2 === 0 ? '#2d3741' : '#353f49'}
             highestDuration={highestDuration(player.recentMatches)}
@@ -154,20 +154,13 @@ function PlayerDetailsScreen(props) {
     </div>
   );
 
-  // TODO: "Overview" section (or even component?): Renders: Render win-loss numbers, winrate %, last match (hours ago), Rank (as an icon?)
-  // TODO: "Most Played Heroes (All Time)": Renders top 10 heroes by # of matches. Shows hero name, last time ago on that hero, Win %, KDA, Role, Lane
-  // TODO: "Latest Matches": Renders last 10 matches. Shows hero played, skill level, result (win/lose), Type, Duration, and KDA
+  // "Overview" section: Render win-loss numbers, winrate %, last match (hours ago), Rank (as an icon?)
+  // "Most Played Heroes (All Time)": Renders top 10 heroes by # of matches. Shows hero name, last time ago on that hero, Win %, KDA, Role, Lane
+  // "Latest Matches": Renders last 10 matches. Shows hero played, skill level, result (win/lose), Type, Duration, and KDA
   return (
     <div className={styles.PlayerDetails}>
       <PlayerOverview player={player} />
-      {/* <div className={styles.PlayerTotals}>
-        <div className={styles.Header}>Player Totals</div>
-        <div className={styles.TotalsContainer}>
-          <div>Kills: {player.totals.kills.toLocaleString()}</div>
-          <div>Deaths: {player.totals.deaths.toLocaleString()}</div>
-          <div>Assists: {player.totals.assists.toLocaleString()}</div>
-        </div>
-      </div> */}
+      {/* TODO: Should these each have their own corresponding List component? */}
       {renderedLifetime}
       {renderedHeroes}
       {renderedMatches}

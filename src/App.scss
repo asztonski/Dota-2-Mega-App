@@ -1,86 +1,66 @@
-// Root // 
+// Root //
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
 }
-
 
 html {
-    overflow: hidden;
+  // overflow: hidden;
 }
-
 
 body {
-    position: relative;
-    overflow-x: hidden;
+  position: relative;
+  overflow-x: hidden;
 }
-    
-
-
-
 
 // Colors //
 
-
-$dota-color-main: #A4230D;
+$dota-color-main: #a4230d;
 $dota-color-blue-dark: #1c2541;
 $dota-color-blue-light: #344577;
-
 
 $backgroundPrimary: #1c242d;
 $headerPrimary: #2e3740;
 $heroOdd: #353f49;
-$heroEven:#2d3741;
+$heroEven: #2d3741;
 $heroText: #a9cf54;
 
-
 ::-webkit-scrollbar {
-    background: $dota-color-main;
-    width: 6px;
+  background: $dota-color-main;
+  width: 6px;
 }
-    
 
-  
 ::-webkit-scrollbar-thumb {
-    background: $dota-color-main
+  background: $dota-color-main;
 }
-
 
 ::selection {
-    background-color: $dota-color-main;
-    color: #fff;
+  background-color: $dota-color-main;
+  color: #fff;
 }
 
 ::-moz-selection {
-    background-color: $dota-color-main;
-    color: #fff;
+  background-color: $dota-color-main;
+  color: #fff;
 }
-
-
-  
-
-
 
 // Fonts //
 
-
-
-$font-path: "assets/fonts";
-
+$font-path: 'assets/fonts';
 
 @font-face {
-    font-family: 'Goudy Medium';
-    src: url("#{$font-path}/OPTIwtcGoudy-Medium.otf");
+  font-family: 'Goudy Medium';
+  src: url('#{$font-path}/OPTIwtcGoudy-Medium.otf');
 }
 
-
 a {
-    color: $dota-color-main;
-    background-color: $dota-color-blue-light;
+  color: $dota-color-main;
+  background-color: $dota-color-blue-light;
 }
