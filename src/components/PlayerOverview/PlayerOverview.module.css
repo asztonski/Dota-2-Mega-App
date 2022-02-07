@@ -1,0 +1,74 @@
+.PlayerOverview {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2rem 0;
+  color: white;
+  background-color: #2e3740;
+  gap: 2rem;
+  font-weight: 800;
+  /* New for Grid refactoring */
+  grid-area: overview;
+}
+
+.OverviewProfile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 1rem;
+}
+
+.ProfileContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.PlayerName {
+  font-size: 2rem;
+}
+
+.ProfileImage {
+  border-radius: 15px;
+}
+
+.ProfileHeader,
+.WinLossHeader,
+.WinrateHeader,
+.RankingHeader {
+  color: #abafa0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:visited {
+  color: #7efce0;
+}
+
+a:hover {
+  border-bottom: 2px solid white;
+}
+/*# sourceMappingURL=PlayerOverview.module.css.map */

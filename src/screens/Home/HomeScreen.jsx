@@ -10,7 +10,7 @@ function HomeScreen() {
 
   return (
     <div className={styles.HomeScreen}>
-      {/* <h1 className={styles.Title}>DOTA 2 Mega App</h1> */}
+      <h1 className={styles.Title}>DOTA 2 Mega App</h1>
       <div className={styles.ButtonContainer}>
         <HomeButton to='/players' className={styles.Button}>
           Players

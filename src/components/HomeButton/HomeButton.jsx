@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './HomeButton.module.scss';
+// import styles from '../../screens/Home/HomeScreen.module.css';
+import styles from './HomeButton.module.css';
 
 function HomeButton({ to, children }) {
   return (
